@@ -22,6 +22,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+		// form validation
+		function validateForm(){
+			var name=document.getElementById("name");
+			var email=document.getElementById("email");
+			var phone=document.getElementById("phone");
+			var subject=document.getElementById("subject");
+			var message=document.getElementById("iq");
+			
+			var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			var phoneno = /^\d{10}$/;
+			
+			if(message.value=="" || name.value=="" || email.value=="" || subject.value=="" || phone.value==""){
+				alert("please fill all the data");
+				return false;
+			}
+			if(name.value.length<3){
+				alert("please enter a valid name");
+				return false;
+			}
+			if(!email.value.match(validRegex)){
+				alert("email address not valid");
+				return false;
+			}
+			if(!phone.value.match(phoneno)){
+			 	alert("enter valid number");
+			 	return false;
+			}
+			if(message.value.length<10){
+				alert("message should be atleast 8 letter long");
+				return false;
+			}
+			if(subject.value.length<10){
+				alert("subject should be atleast 8 letter long");
+				return false;
+			}
+			return true;
+		}
     </script>
 	
 	<!-- css files -->
@@ -129,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="progress-one">
 								<h4 class="progress-tittle">Designer</h4>
 								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+									<div class="progress-bar bg-alert" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
 							</div>
 						</div>
@@ -149,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h3 class="heading mb-sm-5 mb-4">My Services</h3>
 		<div class="row">
 			<div class="col-lg-3 col-sm-6 mb-5">
-			   <div class="panel panel-default">
+			   <div class="panel panel-default ">
 				  <div class="panel-thumbnail">
 					<img src="images/s1.png" alt="" class="img-fluid" />
 					<h3>01</h3>
@@ -386,7 +423,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="#"><i class="fa fa-link"></i></a></li>
 						</ul>
 					</div>
-				</div>
+				</div> 	
 			</div>
 			<div class="col-lg-3 col-md-4 col-6 p-0">
 				<div class="box9">
@@ -427,7 +464,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-lg-6 col-md-6 w3layouts-txt-says">
 			  <div class="clients-info-grid">
-				<p>I get a good impression, I carry out my project with all the possible quality and attention and support 24 hours a day.</p>
+				<p>I get a good impression,I carry out my project with all the possible quality and attention and support 24 hours a day.</p>
 				<div class="row">
 					<div class="col-lg-2 col-3 pr-0 img-position mt-3">
 					  <img src="images/t2.png" alt="" class="img-fluid">
@@ -452,29 +489,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="contact-form">
 			<div class="row">
 				<div class="col-lg-8">
-					<form name="contactform" id="contactform" >
+					<form onsubmit="return validateForm()" id="contactform" >
 						<div class="row">
 							<div class="form-group col-md-6 ">
 							  <label>Name</label>
-							  <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
+							  <input type="text" class="form-control" id="name" placeholder="Enter Name" >
 							</div>
 							<div class="form-group col-md-6">
 							  <label>Email</label>
-							  <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+							  <input type="email" class="form-control" id="email" placeholder="Enter Email" >
 							</div>
 							<div class="form-group col-md-6">
 							  <label>Phone No.</label>
-							  <input type="number" class="form-control" id="phone" placeholder="Enter Phone no." required>
+							  <input type="text" class="form-control" id="phone" placeholder="Enter Phone no." >
 							</div>
 							<div class="form-group col-md-6">
 							  <label>Subject</label>
-							  <input type="text" class="form-control" id="subject" placeholder="Enter Subject" required>
+							  <input type="text" class="form-control" id="subject" placeholder="Enter Subject" >
 							</div>
 							<div class="form-group col-12">
 							  <label>Message</label>
-							  <textarea rows="8" class="form-control" id="iq" placeholder="Enter Your Message Here" required></textarea>
+							  <textarea rows="8" class="form-control" id="iq" placeholder="Enter Your Message Here" ></textarea>
 							</div>				
-							<button type="" class="btn btn-default">Submit </button>
+							<button type="submit" class="btn btn-default">Submit </button>
 						</div>
 					</form>
 				</div>
@@ -531,6 +568,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</a>
 </div>
 <!-- move top -->
+
 
 </body>
 </html>
